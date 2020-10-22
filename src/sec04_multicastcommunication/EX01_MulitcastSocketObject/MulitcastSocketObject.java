@@ -27,9 +27,9 @@ public class MulitcastSocketObject {
 		System.out.println(mcs1.getLocalSocketAddress());
 		System.out.println(mcs2.getLocalSocketAddress());
 		System.out.println(mcs3.getLocalSocketAddress());
+		System.out.println();
 		
-		
-		//#2. MulticastSocket 주요 메서드
+		//#2. MulticastSocket 주요 메서드 (이외 IllegalArgumentException 발생)
 		//@ getTimeToLive(), setTimeToLive(): 0~255
 		try {
 			System.out.println("TimeToLive: " + mcs1.getTimeToLive()); //1
@@ -38,6 +38,7 @@ public class MulitcastSocketObject {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		System.out.println();
 		
 		//@ joinGroup(IP 정보:InetAddress), leaveGroup(IP 정보:InetAddress)
 		//  send(데이터그램패킷), receive(데이터그램패킷)
