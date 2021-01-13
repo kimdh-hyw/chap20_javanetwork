@@ -31,7 +31,7 @@ public class DatagramPacketObject {
 		//#3. DatagramPacket method
 		System.out.println("원격지 IP : " + dp1.getAddress()); //null
 		System.out.println("원격지 Port : " + dp1.getPort());  //-1
-		//System.out.println("원격지 IP : " + dp1.getSocketAddress()); //IllegalArgumentException 예외 발생
+		//System.out.println(dp1.getSocketAddress());//IllegalArgumentException 예외 발생    
 
 		System.out.println("원격지 IP : " + dp3.getAddress()); //localhost/127.0.0.1
 		System.out.println("원격지 Port : " + dp3.getPort());  //10000
