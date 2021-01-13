@@ -60,7 +60,6 @@ public class Multicast_File_ClientB {
 		try {
 			bos = new BufferedOutputStream(new FileOutputStream(file));
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
