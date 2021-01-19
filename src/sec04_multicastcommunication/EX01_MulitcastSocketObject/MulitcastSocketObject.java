@@ -19,7 +19,7 @@ public class MulitcastSocketObject {
 		try {
 			mcs1 = new MulticastSocket(); //기본생성자를 사용하는 경우 비어있는 포트로 자동 바인딩
 			mcs2 = new MulticastSocket(10000);
-			mcs3 = new MulticastSocket(new InetSocketAddress(InetAddress.getLocalHost(), 10000));
+			mcs3 = new MulticastSocket(new InetSocketAddress(InetAddress.getByName("localhost"), 10000));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

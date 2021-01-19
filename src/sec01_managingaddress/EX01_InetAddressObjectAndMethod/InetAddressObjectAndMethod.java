@@ -42,7 +42,7 @@ public class InetAddressObjectAndMethod {
 		System.out.println(ia1.isLoopbackAddress()); //false
 		System.out.println(ia1.isMulticastAddress()); //false 224-239.0-255.0-255.0-255
 		System.out.println(InetAddress.getByAddress(new byte[] {127,0,0,1}).isLoopbackAddress()); //true
-		System.out.println(InetAddress.getByAddress(new byte[] {(byte)225,(byte)225,(byte)225,(byte)225}).isMulticastAddress()); //true
+		System.out.println(InetAddress.getByAddress(new byte[] {(byte)234,(byte)234,(byte)234,(byte)234}).isMulticastAddress()); //true
 
 		
 		
