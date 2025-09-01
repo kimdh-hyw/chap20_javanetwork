@@ -1,6 +1,6 @@
 package sec01_managingaddress.EX01_InetAddressObjectAndMethod;
 
-/*InetAddress를 이용한 네트워크 주소저장(객체 생성 및 주요 메서드)*/
+/*InetAddress(IP주소 only)를 이용한 네트워크 주소저장(객체 생성 및 주요 메서드)*/
 
 import java.io.IOException;
 import java.net.InetAddress;
@@ -48,5 +48,6 @@ public class InetAddressObjectAndMethod {
 
 	}
 }
+
 
 
