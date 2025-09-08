@@ -1,5 +1,7 @@
 package sec02_tcpcommunication.EX02_SeverSocketObject;
 
+/* TCP 통신(Server)을 위한 ServerSocket객체 생성 및 주요 메서드 */
+
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
@@ -48,6 +50,7 @@ public class SeverSocketObject {
 		
 	}
 }
+
 
 
 
