@@ -1,5 +1,7 @@
 package sec02_tcpcommunication.EX01_SocketObject;
 
+/*TCP 통신(Client)을 위한 Socket객체 생성 및 주요 메서드*/
+ 
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
@@ -37,3 +39,4 @@ public class SocketObject {
 		
 	}
 }
+
