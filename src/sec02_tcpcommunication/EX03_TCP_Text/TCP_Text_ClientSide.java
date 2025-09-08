@@ -1,5 +1,7 @@
 package sec02_tcpcommunication.EX03_TCP_Text;
 
+/* TCP 기반 Text 전송을 위한 ClientSide */
+
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.DataInputStream;
@@ -30,6 +32,7 @@ public class TCP_Text_ClientSide {
 		catch (IOException e) {e.printStackTrace();}
 	}
 }
+
 
 
 
