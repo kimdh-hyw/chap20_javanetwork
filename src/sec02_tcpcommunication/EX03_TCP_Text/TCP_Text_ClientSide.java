@@ -1,6 +1,6 @@
 package sec02_tcpcommunication.EX03_TCP_Text;
 
-/* TCP 기반 Text 전송을 위한 ClientSide */
+/* TCP 기반 Text 전송을 위한 ClientSide ("안녕하세요" 송신 후 "어서오세요" 수신)*/
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -32,6 +32,7 @@ public class TCP_Text_ClientSide {
 		catch (IOException e) {e.printStackTrace();}
 	}
 }
+
 
 
 
