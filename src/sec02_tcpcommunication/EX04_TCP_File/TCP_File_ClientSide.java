@@ -30,6 +30,8 @@ public class TCP_File_ClientSide {
 			FileInputStream fis = new FileInputStream(file);
 			BufferedInputStream bis = new BufferedInputStream(fis);
 			System.out.println("파일전송:"+ file.getName());
+
+			/* 송신할 데이터의 순서 : 파일이름 + byte단위 파일 데이터(파일길이 + 파일 데이터) -> 파일길이가 -1이면 파일이 종료됨을 의미 */
 			
 			//#1. 파일이름 전송
 			dos.writeUTF(file.getName());
@@ -53,4 +55,5 @@ public class TCP_File_ClientSide {
 		catch (IOException e) {e.printStackTrace();}
 	}
 }
+
 
