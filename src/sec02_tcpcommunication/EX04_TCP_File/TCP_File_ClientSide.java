@@ -1,5 +1,8 @@
 package sec02_tcpcommunication.EX04_TCP_File;
 
+/* TCP 기반 File 전송을 위한 ClientSide (files_clent폴더의 ImageFileUsingTCP.jpg파일을 송신) */
+//송신할 데이터의 순서 : 파일이름 + byte단위 파일 데이터(파일길이 + 파일 데이터) -> 파일길이가 -1이면 파일이 종료됨을 의미
+
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.DataInputStream;
@@ -50,3 +53,4 @@ public class TCP_File_ClientSide {
 		catch (IOException e) {e.printStackTrace();}
 	}
 }
+
