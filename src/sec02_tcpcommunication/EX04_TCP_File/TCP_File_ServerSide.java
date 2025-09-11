@@ -1,6 +1,6 @@
 package sec02_tcpcommunication.EX04_TCP_File;
 
-/* TCP 기반 File 전송을 위한 ServerSide ("안녕하세요" 수신 후 "어서오세요" 회신)*/
+/* TCP 기반 File 전송을 위한 ServerSide (수신한 이미지파일을 file_server폴더에 저장) */
 //수신된 데이터의 순서 : 파일이름 + byte단위 파일 데이터(파일길이 + 파일 데이터) -> 파일길이가 -1이면 파일이 종료됨을 의미
 
 
@@ -61,6 +61,7 @@ public class TCP_File_ServerSide {
 		} catch (IOException e) {}
 	}
 }
+
 
 
 
