@@ -1,6 +1,6 @@
 package sec02_tcpcommunication.EX03_TCP_Text;
 
-/* TCP 기반 Text 전송을 위한 ServerSide */
+/* TCP 기반 Text 전송을 위한 ServerSide ("안녕하세요" 수신 후 "어서오세요" 회신)*/
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -44,4 +44,5 @@ public class TCP_Text_ServerSide {
 		
 	}
 }
+
 
