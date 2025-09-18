@@ -1,5 +1,7 @@
 package sec03_udpcommunication.EX01_DatagramPacketObject;
 
+/* DatagramPacket 객체 생성 및 DatagramPacket의 주요 메서드 */
+
 import java.net.DatagramPacket;
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
@@ -47,6 +49,7 @@ public class DatagramPacketObject {
 		
 	}
 }
+
 
 
 
