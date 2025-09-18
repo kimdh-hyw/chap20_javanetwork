@@ -6,6 +6,8 @@ import java.net.DatagramSocket;
 import java.net.InetSocketAddress;
 import java.net.SocketException;
 
+/* 비연결성(nonconnected) UDP를 이용한 Text 전송 (ClientA) */
+
 public class NonConnectedUDP_Text_ClientA {
 	public static void main(String[] args) {
 		
@@ -37,3 +39,4 @@ public class NonConnectedUDP_Text_ClientA {
 		
 	}
 }
+
