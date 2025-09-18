@@ -1,6 +1,6 @@
 package sec03_udpcommunication.EX03_NonConnectedUDP_Text;
 
-/* 비연결성(nonconnected) UDP를 이용한 Text 전송 (ClientA) */
+/* 비연결성(nonconnected) UDP를 이용한 Text 전송 (ClientA): 10000번 포트 바인딩 */
 
 import java.io.IOException;
 import java.net.DatagramPacket;
@@ -39,5 +39,6 @@ public class NonConnectedUDP_Text_ClientA {
 		
 	}
 }
+
 
 
