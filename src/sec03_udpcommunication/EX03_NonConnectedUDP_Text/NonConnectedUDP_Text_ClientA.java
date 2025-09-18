@@ -5,7 +5,6 @@ package sec03_udpcommunication.EX03_NonConnectedUDP_Text;
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
-import java.net.InetSocketAddress;
 import java.net.SocketException;
 
 public class NonConnectedUDP_Text_ClientA {
@@ -39,6 +38,7 @@ public class NonConnectedUDP_Text_ClientA {
 		
 	}
 }
+
 
 
 
