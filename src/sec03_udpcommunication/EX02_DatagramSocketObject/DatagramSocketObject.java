@@ -1,5 +1,7 @@
 package sec03_udpcommunication.EX02_DatagramSocketObject;
 
+/* DatagramSocket 객체 생성 및 이를 이용한 DatagramePacket의 UDP 송수신 */
+
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
@@ -91,3 +93,4 @@ public class DatagramSocketObject {
 		}
 	}
 }
+
