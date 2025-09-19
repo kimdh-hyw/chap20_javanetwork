@@ -1,5 +1,7 @@
 package sec03_udpcommunication.EX04_ConnectedUDP_File;
 
+/* 연결성(connected) UDP를 이용한 File 전송 (ClientA 측) */
+
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -12,17 +14,18 @@ import java.net.SocketException;
 
 public class ConnectedUDP_File_ClientA {
 	public static void main(String[] args) {
-		System.out.println("<<ClientA>> - File");
+		
+		System.out.println("<<ClientB>> - File");
 		
 		//#1. DatagramSocket 생성 (binding 포함)
 		DatagramSocket ds = null;
 		try {
-			ds = new DatagramSocket(10000);
-			ds.connect(new InetSocketAddress("localhost", 20000));			
+			ds = new DatagramSocket(20000);
+			ds.connect(new InetSocketAddress("localhost", 10000));			
 		} catch (SocketException e) { e.printStackTrace();	}
 		
 		//#2. 파일로딩
-		File file = new File("src\\sec03_udpcommunication\\files_clientA\\ImageFileUsingUDP.jpg");
+		File file = new File("files_clientB/ImageFileUsingUDP.jpg");
 		BufferedInputStream bis = null;
 		try {
 			bis = new BufferedInputStream(new FileInputStream(file));
@@ -75,8 +78,4 @@ public class ConnectedUDP_File_ClientA {
 		System.out.println("수신데이터 : "+new String(receivedPacket.getData()).trim());
 	}
 }
-
-
-
-
 
