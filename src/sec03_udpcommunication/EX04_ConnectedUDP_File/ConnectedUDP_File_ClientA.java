@@ -1,6 +1,6 @@
 package sec03_udpcommunication.EX04_ConnectedUDP_File;
 
-/* 연결성(connected) UDP를 이용한 File 전송 (ClientA 측) : File 수신측 */
+/* 연결성(connected) UDP를 이용한 File 전송 (ClientA 측) : File 수신측 (2025.09 수정) */
 
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -15,7 +15,7 @@ import java.net.SocketException;
 public class ConnectedUDP_File_ClientA {
 	public static void main(String[] args) {
 		
-		System.out.println("<<ClientA>> - File");
+		System.out.println("<<ClientA>> - File 수신 대기 ...");
 		
 		//#1. DatagramSocket 생성 (binding 포함)
 		DatagramSocket ds = null;
@@ -80,6 +80,7 @@ public class ConnectedUDP_File_ClientA {
 		} catch (IOException e) {e.printStackTrace(); }		
 	}
 }
+
 
 
 
