@@ -1,6 +1,6 @@
 package sec03_udpcommunication.EX04_ConnectedUDP_File;
 
-/* 연결성(connected) UDP를 이용한 File 전송 (ClientA 측) */
+/* 연결성(connected) UDP를 이용한 File 전송 (ClientA 측) : File 수신측 */
 
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -78,4 +78,5 @@ public class ConnectedUDP_File_ClientA {
 		System.out.println("수신데이터 : "+new String(receivedPacket.getData()).trim());
 	}
 }
+
 
