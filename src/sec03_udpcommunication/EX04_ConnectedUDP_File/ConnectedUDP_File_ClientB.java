@@ -2,10 +2,10 @@ package sec03_udpcommunication.EX04_ConnectedUDP_File;
 
 /* 연결성(connected) UDP를 이용한 File 전송 (ClientB 측) : File 송신측 */
 
-import java.io.BufferedOutputStream;
+import java.io.BufferedInputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
@@ -79,4 +79,5 @@ public class ConnectedUDP_File_ClientB {
 		
 	}
 }
+
 
