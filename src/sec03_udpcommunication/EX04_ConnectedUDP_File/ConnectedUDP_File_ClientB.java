@@ -1,5 +1,7 @@
 package sec03_udpcommunication.EX04_ConnectedUDP_File;
 
+/* 연결성(connected) UDP를 이용한 File 전송 (ClientB 측) : File 송신측 */
+
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -22,71 +24,59 @@ public class ConnectedUDP_File_ClientB {
 			ds.connect(new InetSocketAddress("localhost", 10000));			
 		} catch (SocketException e) { e.printStackTrace();	}
 		
-		//#2. 데이터그램 패킷 수신
-		byte[] receivedData = null;
-		DatagramPacket receivedPacket = null;
-		
-		//@2-1. 파일이름 수신
-		receivedData = new byte[65508];
-		receivedPacket = new DatagramPacket(receivedData, receivedData.length);		
+		//#2. 파일로딩
+		File file = new File("files_clientB/ImageFileUsingUDP.jpg");
+		BufferedInputStream bis = null;
 		try {
-			ds.receive(receivedPacket);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}		
-		String fileName = new String(receivedPacket.getData(), 0, receivedPacket.getLength());
-		File file = new File("src\\sec03_udpcommunication\\files_clientB\\"+fileName);
+			bis = new BufferedInputStream(new FileInputStream(file));
+		} catch (FileNotFoundException e) { e.printStackTrace(); }
 		
-		BufferedOutputStream bos =null;
-		try {
-			bos = new BufferedOutputStream (new FileOutputStream(file));
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		System.out.println("수신파일이름 : "+fileName);
+		//#3. 데이터그램 패킷 전송
+		DatagramPacket sendPacket = null;
 		
-		//@2-2. 시작태그와 끝태그를 기준으로 파일 수신
-		String startSign = "/start";
-		String endSign = "/end";
-		
-		receivedData = new byte[65508];
-		receivedPacket = new DatagramPacket(receivedData, receivedData.length);		
-		
-		try {
-			ds.receive(receivedPacket);
-			if(new String(receivedPacket.getData(), 0, receivedPacket.getLength()).equals(startSign)) {
-				while(true) {
-					ds.receive(receivedPacket);
-					if(new String(receivedPacket.getData(), 0, receivedPacket.getLength()).equals(endSign)) 
-						break;					
-					bos.write(receivedPacket.getData(), 0, receivedPacket.getLength());
-					bos.flush();
-				}
-				
-			}
-			bos.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-		//#4. 파일 전송 완료 메세지 응답
-		byte[] sendData = "파일 수신 완료".getBytes();		
-		DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length); //수신지 정보 없음
+		//@3-1. 파일이름 전송
+		String fileName = file.getName();
+		sendPacket = new DatagramPacket(fileName.getBytes(), fileName.getBytes().length); //수신지 정보 없음
 		try {
 			ds.send(sendPacket);
-		} catch (IOException e) {e.printStackTrace(); }		
+		} catch (IOException e) {e.printStackTrace(); }
+		
+		//@3-2. 파일전송 시작을 알리는 사인 전송 (/start)
+		String startSign = "/start";
+		sendPacket = new DatagramPacket(startSign.getBytes(), startSign.getBytes().length); //수신지 정보 없음
+		try {
+			ds.send(sendPacket);
+		} catch (IOException e) {e.printStackTrace(); }
+		
+		//@3-3. 2048 사이즈로 나누어 실제 파일데이터 전송
+		int len;
+		byte[] filedata = new byte[2048]; //최대 65508 byte이지만 2048로 나누어 전송
+		try {
+			while((len=bis.read(filedata)) !=-1) {
+				sendPacket = new DatagramPacket(filedata, len);
+				ds.send(sendPacket);
+			}
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		
+		//@3-4. 파일전송 끝을 알리는 사인 전송 (/end)
+		String endSign = "/end";
+		sendPacket = new DatagramPacket(endSign.getBytes(), endSign.getBytes().length); //수신지 정보 없음
+		try {
+			ds.send(sendPacket);
+		} catch (IOException e) {e.printStackTrace(); }
+		
+		//#4. 데이터그램 텍스트 패킷 수신
+		byte[] receivedData = new byte[65508];
+		DatagramPacket receivedPacket = new DatagramPacket(receivedData, receivedData.length);
+		try {
+			ds.receive(receivedPacket);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		System.out.println("수신데이터 : "+new String(receivedPacket.getData()).trim());
 		
 	}
 }
-
-
-
-
-
-
-
-
-
-
 
