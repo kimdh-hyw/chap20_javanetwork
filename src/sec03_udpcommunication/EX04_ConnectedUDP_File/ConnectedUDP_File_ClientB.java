@@ -15,7 +15,7 @@ import java.net.SocketException;
 public class ConnectedUDP_File_ClientB {
 	public static void main(String[] args) {
 		
-		System.out.println("<<ClientB>> - File 수신 대기 ...");
+		System.out.println("<<ClientB>> - File 송신 대기 ...");
 		
 		//#1. DatagramSocket 생성 (binding 포함)
 		DatagramSocket ds = null;
@@ -79,6 +79,7 @@ public class ConnectedUDP_File_ClientB {
 		
 	}
 }
+
 
 
 
