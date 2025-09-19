@@ -2,10 +2,10 @@ package sec03_udpcommunication.EX04_ConnectedUDP_File;
 
 /* 연결성(connected) UDP를 이용한 File 전송 (ClientA 측) : File 수신측 */
 
-import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
@@ -37,7 +37,7 @@ public class ConnectedUDP_File_ClientA {
 			e.printStackTrace();
 		}		
 		String fileName = new String(receivedPacket.getData(), 0, receivedPacket.getLength());
-		File file = new File("files_clientB/"+fileName);
+		File file = new File("files_clientA/"+fileName);
 		
 		BufferedOutputStream bos =null;
 		try {
@@ -80,6 +80,7 @@ public class ConnectedUDP_File_ClientA {
 		} catch (IOException e) {e.printStackTrace(); }		
 	}
 }
+
 
 
 
