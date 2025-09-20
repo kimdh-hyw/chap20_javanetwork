@@ -1,6 +1,6 @@
 package sec04_multicastcommunication.EX02_Multicast_Text;
 
-/* Multicast 통신을 이용한 Text 송수진 (ClientA) (2025.09 수정) */ 
+/* Multicast 통신을 이용한 Text 송수신 (ClientA) (2025.09 수정) */ 
 
 import java.io.IOException;
 import java.net.DatagramPacket;
@@ -95,6 +95,7 @@ public class Multicast_Text_ClientA {
 	}	
 	
 }
+
 
 
 
