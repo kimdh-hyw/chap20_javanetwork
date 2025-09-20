@@ -1,14 +1,19 @@
 package sec04_multicastcommunication.EX02_Multicast_Text;
 
+/* Multicast 통신을 이용한 Text 송수진 (ClientA) (2025.09 수정) */ 
+
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.InetAddress;
+import java.net.InetSocketAddress;
 import java.net.MulticastSocket;
+import java.net.NetworkInterface;
 import java.net.UnknownHostException;
 
 public class Multicast_Text_ClientA {
-	public static void main(String[] args) {
-		System.out.println("<<ClientA>> - Text");
+		public static void main(String[] args) {
+		
+		System.out.println("<<ClientA>> - Text 수신대기 ... ");
 		
 		//#1. 멀티캐스팅 주소지 생성
 		InetAddress multicastAddress = null;
@@ -29,13 +34,21 @@ public class Multicast_Text_ClientA {
 		
 		//#3. 멀티캐스트 그룹에 조인
 		try {
-			mcs.joinGroup(multicastAddress);
+			//mcs.joinGroup(multicastAddress);
+			
+			//변경 버전 2025.09 
+			//NetworkInterface는 어느 네트워크 인터페이스(예: eth0, wlan0)를 사용할지 지정합니다. 멀티캐스트는 네트워크 인터페이스에 따라 다르게 동작할 수 있기 때문에 명시해야 함
+			mcs.joinGroup(new InetSocketAddress(multicastAddress,multicastPort), NetworkInterface.getByInetAddress(InetAddress.getLocalHost()));
+						
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		
-		//#4. 전송 데이터그램 패킷 생성 + 전송
-		byte[] sendData = "안녕하세요!(ClientA)".getBytes();
+		//#4. 데이터그램 패킷 수신 대기
+		receiveMessage(mcs); //ClientA가 보낸 메시지 수신
+		
+		//#5. 전송 데이터그램 패킷 생성 + 전송
+		byte[] sendData = "반갑습니다!(ClientA)".getBytes();
 		
 		DatagramPacket sendPacket = 
 				new DatagramPacket(sendData, sendData.length, multicastAddress, multicastPort);
@@ -45,19 +58,24 @@ public class Multicast_Text_ClientA {
 			e.printStackTrace();
 		}
 		
-		//#5. 데이터그램 패킷 수신
-		receiveMessage(mcs); //자기가 보낸 데이터 수신
-		receiveMessage(mcs); //상대편이 보낸 데이터 수신
+		//#6. 데이터그램 패킷 수신 대기
+		receiveMessage(mcs); //자기가 보낸 메시지 수신
 		
-		//#6. 멀티캐스트 그룹 나가기
+		//#7. 멀티캐스트 그룹 나가기
 		try {
-			mcs.leaveGroup(multicastAddress);
+			//mcs.leaveGroup(multicastAddress);
+			
+			//변경 버전 2025.09 
+			//NetworkInterface는 어느 네트워크 인터페이스(예: eth0, wlan0)를 사용할지 지정합니다. 멀티캐스트는 네트워크 인터페이스에 따라 다르게 동작할 수 있기 때문에 명시해야 함
+			mcs.leaveGroup(new InetSocketAddress(multicastAddress,multicastPort), NetworkInterface.getByInetAddress(InetAddress.getLocalHost()));
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		
-		//#7. 소켓 닫기
+		//#8. 소켓 닫기
 		mcs.close();
+		
 	}
 	
 	static void receiveMessage(MulticastSocket mcs) {
@@ -74,18 +92,9 @@ public class Multicast_Text_ClientA {
 		
 		System.out.println("보내온 주소 : " + receivedPacket.getSocketAddress());
 		System.out.println("보내온 내용 : " + new String(receivedPacket.getData()).trim());
-	}
-	
+	}	
 	
 }
-
-
-
-
-
-
-
-
 
 
 
