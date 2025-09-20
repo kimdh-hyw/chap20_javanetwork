@@ -48,16 +48,17 @@ public class MulitcastSocketObject {
 		
 		//joinGroup()
 		try {
-			mcs1.joinGroup(InetAddress.getByName("234.234.234.234"));
-			mcs2.joinGroup(InetAddress.getByName("234.234.234.234"));
-			mcs3.joinGroup(InetAddress.getByName("234.234.234.234"));
 			
-			/* 변경 버전 2025.09
+			//mcs1.joinGroup(InetAddress.getByName("234.234.234.234"));
+			//mcs2.joinGroup(InetAddress.getByName("234.234.234.234"));
+			//mcs3.joinGroup(InetAddress.getByName("234.234.234.234"));
+			
+			//변경 버전 2025.09
 			//NetworkInterface는 어느 네트워크 인터페이스(예: eth0, wlan0)를 사용할지 지정합니다. 멀티캐스트는 네트워크 인터페이스에 따라 다르게 동작할 수 있기 때문에 명시해야 함
 			mcs1.joinGroup(new InetSocketAddress(InetAddress.getByName("234.234.234.234"),mcs1.getLocalPort()), NetworkInterface.getByInetAddress(InetAddress.getLocalHost()));
 			mcs2.joinGroup(new InetSocketAddress(InetAddress.getByName("234.234.234.234"),10000), NetworkInterface.getByInetAddress(InetAddress.getLocalHost()));
 			mcs3.joinGroup(new InetSocketAddress(InetAddress.getByName("234.234.234.234"),10000), NetworkInterface.getByInetAddress(InetAddress.getLocalHost()));
-			*/
+			
 			
 			byte[] sendData = "안녕하세요".getBytes();
 			
@@ -91,4 +92,5 @@ public class MulitcastSocketObject {
 		
 	}
 }
+
 
