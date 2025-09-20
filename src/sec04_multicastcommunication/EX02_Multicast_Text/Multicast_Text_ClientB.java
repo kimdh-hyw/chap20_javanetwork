@@ -13,7 +13,7 @@ import java.net.UnknownHostException;
 public class Multicast_Text_ClientB {
 	public static void main(String[] args) {
 		
-		System.out.println("<<ClientB>> - Text");
+		System.out.println("<<ClientB>> - Text 수신 대기 ...");
 		
 		//#1. 멀티캐스팅 주소지 생성
 		InetAddress multicastAddress = null;
@@ -93,4 +93,5 @@ public class Multicast_Text_ClientB {
 		System.out.println("보내온 내용 : " + new String(receivedPacket.getData()).trim());
 	}
 }
+
 
