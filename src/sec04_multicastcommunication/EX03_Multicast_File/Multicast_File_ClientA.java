@@ -113,9 +113,12 @@ public class Multicast_File_ClientA {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+
+		//ClientB가 joinGroup()을 하는 동안의 시간 간격을 위해서 일정 지연시간
+		try { Thread.sleep(1000);}  catch (InterruptedException e) {e.printStackTrace();}
 		
 		//#6. 전송 데이터그램 생성 + 전송
-		byte[] sendData = "(ClientB) 파일 수신 완료".getBytes();
+		byte[] sendData = "(ClientA) 파일 수신 완료".getBytes();
 		DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, multicastAddress, multicastPort);		
 		try {
 			mcs.send(sendPacket);
@@ -128,6 +131,7 @@ public class Multicast_File_ClientA {
 		
 	}
 }
+
 
 
 
